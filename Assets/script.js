@@ -5,11 +5,13 @@ var sectionEl = document.querySelector("#section");
 var currentTimeEl = document.querySelector(".current-time");
 var formEl = document.querySelector("form");
 var inputEl = document.querySelector("input[type=text]");
+var highScoreEl = document.querySelector("#high-score");
 
 var timeLeft = 90
 var stage = 0;
 var timer;
 var score = 0;
+
 
 var scoreboard = JSON.parse(localStorage.getItem("scoreboard")) || [];
 
@@ -48,7 +50,11 @@ var questions = [
 currentTimeEl.textContent = timeLeft + " s";
 
 function start() {
-    renderQuestion();
+    if (highScoreEl) {
+        renderHighScore();
+    } else {
+        renderQuestion();
+    }
 
     timer = setInterval(function () {
         timeLeft--;
@@ -74,9 +80,11 @@ function renderQuestion() {
         sectionEl.appendChild(btn);
         btn.setAttribute("style", "display: block; margin: auto; margin-bottom: 10px");
     }
+    formEl.style.visibility = "hidden";
 };
 
 function gameOver() {
+    formEl.style.visibility = "visible";
     sectionEl.innerHTML = "";
     clearInterval(timer);
     currentTimeEl.textContent = timeLeft + " s";
@@ -85,6 +93,19 @@ function gameOver() {
     sectionEl.appendChild(scoreMsg);
 };
 
+function renderHighScore() {
+    var sortedByScore = scoreboard.sort(function (a, b) {
+        return b.score - a.score;
+    });
+    for (var item of scoreboard) {
+        var liEl = document.createElement("li");
+        liEl.textContent = item.initials + ": " + item.score;
+        highScoreEl.appendChild(liEl);
+    }
+}
+
+if (sectionEl && formEl) {
+    
 sectionEl.addEventListener("click", function (event) {
     var element = event.target;
     if (element.matches("button")) {
@@ -108,10 +129,11 @@ sectionEl.addEventListener("click", function (event) {
 formEl.addEventListener('submit', function (event) {
     event.preventDefault();
     var initials = inputEl.value;
-    var data = { initials: initials, score: timeLeft};
+    var data = { initials: initials, score: timeLeft };
     console.log("submit", data);
     scoreboard = scoreboard.concat(data);
-    localStorage.setItem("scoreboard", JSON.stringify(scoreboard));  
+    localStorage.setItem("scoreboard", JSON.stringify(scoreboard));
 });
+};
 
 startButton.onclick = start();
