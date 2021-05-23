@@ -3,11 +3,16 @@ var questionTitleEl = document.querySelector("#question-title");
 var startButton = document.querySelector("#start-button");
 var sectionEl = document.querySelector("#section");
 var currentTimeEl = document.querySelector(".current-time");
+var formEl = document.querySelector("form");
+var inputEl = document.querySelector("input[type=text]");
 
 var timeLeft = 90
 var stage = 0;
 var timer;
 var score = 0;
+
+var scoreboard = JSON.parse(localStorage.getItem("scoreboard")) || [];
+
 var questions = [
     {
         title: "Question1",
@@ -54,7 +59,7 @@ function start() {
             clearInterval(timer);
         }
     }, 1000);
-}
+};
 
 function renderQuestion() {
     var currentQuestion = questions[stage];
@@ -68,8 +73,17 @@ function renderQuestion() {
         btn.setAttribute("data-index", i);
         sectionEl.appendChild(btn);
         btn.setAttribute("style", "display: block; margin: auto; margin-bottom: 10px");
-    }   
-}
+    }
+};
+
+function gameOver() {
+    sectionEl.innerHTML = "";
+    clearInterval(timer);
+    currentTimeEl.textContent = timeLeft + " s";
+    var scoreMsg = document.createElement("p");
+    scoreMsg.textContent = "Good Job! Your score is " + timeLeft + "!";
+    sectionEl.appendChild(scoreMsg);
+};
 
 sectionEl.addEventListener("click", function (event) {
     var element = event.target;
@@ -89,28 +103,15 @@ sectionEl.addEventListener("click", function (event) {
             gameOver();
         }
     }
-})
+});
 
-function gameOver() {
-    sectionEl.innerHTML = "";
-    clearInterval(timer);
-    currentTimeEl.textContent = timeLeft + " s";
-    var scoreMsg = document.createElement("p");
-    scoreMsg.textContent = "Good Job! Your score is " + timeLeft + "!" + " Enter your initials below to save your score.";
-    scoreMsg.setAttribute("style", "font-size: 24px; color: lightslategrey");
-    sectionEl.appendChild(scoreMsg);
-
-    var initials = document.createElement("input");
-    initials.setAttribute("type", "text");
-    initials.setAttribute("placeholder", "Initials");
-    sectionEl.appendChild(initials);
-    
-    var submitBtn = document.createElement("input");
-    submitBtn.setAttribute("type", "submit");
-    submitBtn.setAttribute("value", "Submit");
-    submitBtn.setAttribute("style", "background-color: slategrey; color: white")
-    sectionEl.appendChild(submitBtn);
-    
-}
+formEl.addEventListener('submit', function (event) {
+    event.preventDefault();
+    var initials = inputEl.value;
+    var data = { initials: initials, score: timeLeft};
+    console.log("submit", data);
+    scoreboard = scoreboard.concat(data);
+    localStorage.setItem("scoreboard", JSON.stringify(scoreboard));  
+});
 
 startButton.onclick = start();

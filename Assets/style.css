@@ -73,3 +73,7 @@ button:hover {
     background-color: #ff80a4;
 }
 
+input[type=text] {
+    padding: 8px;
+    border-radius: 5px;
+}
