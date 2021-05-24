@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=<<M<>>, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="./Assets/style.css" />
+    <link rel="stylesheet" href="./assets/style.css" />
 </head>
 <body>
     <nav>
@@ -13,19 +13,29 @@
             <li class="high-scores">
                 <a href="./highscores.html">High Scores</a>
             </li>
-            <li>Timer: <span class="current-time"></span></li>
+            <li>
+                Timer: <span class="current-time"></span>
+            </li>
         </ul>
     </nav>
     <main>
         <header>
             <h1>Coding Quiz Challenge</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit, distinctio? Quae quod quas facilis in eligendi dolorem, et error veniam dolor rem id quos harum libero corporis nam numquam sint.</p>
-            
+            <h2 id="question-title"></h2>
         </header>
-        <section class="quiz-content">
-            <button id="start-button" class="btn"><a href="./questions.html">Start the Quiz!</a></button>
+        <section id="section">
+            <p class="directions">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error porro temporibus sunt incidunt excepturi laudantium magnam facilis molestias, perspiciatis doloribus animi sint enim ipsam commodi qui, optio, iste assumenda aspernatur!</p>
         </section>
+        <div id="label"></div>
+        <section class="quiz-content">
+            <button id="start-button" class="btn">Start the Quiz!</a></button>
+        </section>
+        <form class="form">
+            <input type="text" placeholder="Enter Initials"/>
+            <button class="btn">Submit</button>
+        </form>
     </main>
-    <script src="./Assets/script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
+    <script src="./assets/script.js"></script>
 </body>
 </html>

@@ -1,6 +1,6 @@
 * :root {
-    --main-color: rgb(109, 171, 241); 
-    --light: rgba(211, 211, 211, 0.781); 
+    --dark: #697184; 
+    --light: #F2F1EF; 
 }
 
 body {
@@ -10,7 +10,7 @@ body {
 }
 
 nav {
-    background-color: lightslategray;
+    background-color: #697184;
     border-radius: 5px;
     margin: 16px;
     padding: 16px;
@@ -23,7 +23,7 @@ nav ul {
 }
 
 nav ul li {
-    color: white;
+    color: #F2F1EF;
     font-size: 24px;
     margin-right: 32px;
     box-sizing: border-box;
@@ -31,12 +31,12 @@ nav ul li {
 
 nav ul a {
     text-decoration: none;
-    color: white;
+    color: #F2F1EF;
 }
 
 nav ul a:hover {
-    background-color: white;
-    color: lightslategray;
+    background-color: #F2F1EF;
+    color: #697184;
 }
 
 main {
@@ -58,7 +58,7 @@ p {
 
 button {
     border: none;
-    background-color: lightslategray;
+    background-color: #697184;
     color: white;
     border-radius: 5px;
     padding: 10px 16px 10px 16px;
@@ -69,7 +69,7 @@ button {
 
 button:hover {
     transition-duration: 0.4s;
-    background-color: #ff80a4;
+    background-color: #D49E8D;
 }
 
 input[type=text] {
@@ -78,7 +78,10 @@ input[type=text] {
 }
 
 ol {
-    width: 10%;
+    width: 25%;
     margin: auto;
-    
+}
+
+form {
+    visibility: hidden;
 }
