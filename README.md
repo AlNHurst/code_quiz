@@ -12,7 +12,7 @@ The Coding Quiz has a responsive user interface which is demonstrated in the fol
 
 ## The Coding Quiz Challenge Demonstration
 
-![The Coding Quiz]()
+![The Coding Quiz](https://github.com/AlNHurst/code_quiz/blob/main/Demo/coding_quiz.gif)
 
 ## Links
 * GitHub Repository
