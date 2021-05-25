@@ -10,6 +10,10 @@ The Coding Quiz has a responsive user interface which is demonstrated in the fol
 * High Scores: The user's score is saved to the High Score ranking. 
 * Question shuffle: The shuffle method was added to shuffle the questions for users who want to retry the quiz. 
 
+## The Coding Quiz Challenge Demonstration
+
+![The Coding Quiz]()
+
 ## Links
 * GitHub Repository
 https://github.com/AlNHurst/code_quiz
