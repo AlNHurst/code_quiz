@@ -5,12 +5,13 @@
 
 body {
     margin: auto;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 16px;
+    font-family: monospace;
+    font-size: 20px;
+    background-color: rgb(20, 20, 20);
+    
 }
 
 nav {
-    background-color: #697184;
     border-radius: 5px;
     margin: 16px;
     padding: 16px;
@@ -23,20 +24,22 @@ nav ul {
 }
 
 nav ul li {
-    color: #F2F1EF;
+    color: red;
     font-size: 24px;
     margin-right: 32px;
+    padding: 16px 32px;
     box-sizing: border-box;
+    background-color: white;
+    border-radius: 20px;    
 }
 
 nav ul a {
     text-decoration: none;
-    color: #F2F1EF;
+    font-weight: bold;
 }
 
 nav ul a:hover {
-    background-color: #F2F1EF;
-    color: #697184;
+    text-decoration: underline;
 }
 
 main {
@@ -45,36 +48,33 @@ main {
     width: 60%;
     padding: 10px;
     color: lightslategray;
-}
-
-p {
-    font-size: 20px;
+    vertical-align: center;
 }
 
 .btn a {
     text-decoration: none;
     color: white;
+    font-size: 16px;
 }
 
 button {
     border: none;
     background-color: #697184;
     color: white;
-    border-radius: 5px;
-    padding: 10px 16px 10px 16px;
-    font-size: 17px;
-    font-family: 'Roboto Slab', arial;
+    border-radius: 20px;
+    padding: 16px 16px;
+    font-size: 20px;
     margin: 4px;
 }
 
 button:hover {
     transition-duration: 0.4s;
-    background-color: #D49E8D;
+    background-color: rgba(90, 49, 136, 0.308);
 }
 
 input[type=text] {
-    padding: 8px;
-    border-radius: 5px;
+    padding: 20px;
+    border-radius: 20px;
 }
 
 ol {

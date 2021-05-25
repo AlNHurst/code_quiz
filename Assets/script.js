@@ -11,17 +11,13 @@ var quizDirections = document.querySelector(".directions");
 var labelEl = document.querySelector("#label");
 
 
-var timeLeft = 10;
+var timeLeft = 90;
 var stage = 0;
 var timer;
 var score = 0;
 
 // localstorage get item if set item is available or empty array
 var scoreboard = JSON.parse(localStorage.getItem("scoreboard")) || [];
-
-if (currentTimeEl) {
-    currentTimeEl.textContent = 10 + " s";
-}
 
 // Questions as arrays. Using Lodash shuffle to shuffle questions in a random order
 var data = [
@@ -66,6 +62,11 @@ var currentQuestion = questions[stage];
 // var choices = _.shuffle(currentQuestion.choices);
 renderHighScore();
 
+// if statement to display time on page
+if (currentTimeEl) {
+    currentTimeEl.textContent = 90 + " s";
+}
+
 
 // Displays start time on timer before countdown begins
 // Start function which starts the quiz and displays the time left. If time runs out, the user will be prompted that they are out of time! 
@@ -75,11 +76,12 @@ function start() {
 
     timer = setInterval(function () {
         timeLeft--;
-        if (timeLeft > 0) {
-            currentTimeEl.textContent = timeLeft + " s";
-        } else {
-            currentTimeEl.textContent = 0 + " s";
+        if (timeLeft <= 0) {
+            currentTimeEl.textContent = "Game Over!";
             clearInterval(timer);
+            gameOver();
+        } else {
+            currentTimeEl.textContent = timeLeft + " s";
         }
     }, 1000);
 };
@@ -115,11 +117,13 @@ function gameOver() {
     var initialMsg = document.createElement("p");
     sectionEl.appendChild(scoreMsg);
     formEl.appendChild(initialMsg);
+
     if (timeLeft <= 0) {
         scoreMsg.textContent = "You ran out of time! Refresh the website to try again!";
+        scoreMsg.setAttribute("style", "font-size: 24px; color: red")
     } else {
-        scoreMsg.textContent = "Good Job! Your score is " + timeLeft + "!"; 
-        scoreMsg.setAttribute("style", "font-size: 32px; color: green")
+        scoreMsg.textContent = "Nice work! Your score is " + timeLeft + "!";
+        scoreMsg.setAttribute("style", "font-size: 28px; color: green")
         initialMsg.textContent = " Enter your initials above to record your high score. Then click High Scores to view the standings and see how you measure up!";
         formEl.style.visibility = "visible";
     }
@@ -159,7 +163,7 @@ sectionEl?.addEventListener("click", function (event) {
                 labelEl.appendChild(response);
                 timeLeft -= 15;
             }
-            stage++;
+            stage ++;
             renderQuestion();
         } else {
             gameOver();
