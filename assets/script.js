@@ -178,6 +178,8 @@ formEl?.addEventListener("submit", function (event) {
     var data = { initials: initials, score: timeLeft };
     scoreboard = scoreboard.concat(data);
     localStorage.setItem("scoreboard", JSON.stringify(scoreboard));
+    inputEl.value="";
+    location.replace("./highscores.html");
 });
 
 // Starts countDown of timer and displays first question after the start button is clicked.
